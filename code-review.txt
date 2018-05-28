@@ -1,0 +1,72 @@
+CSC207 A4 Code view 每 Class FileNode.java
+
+Note: Please be advised that all line referencing are corresponding to the line number in Eclipse.
+=================================
+Things well done:
+
+A neat organization of code as you have most doc strings written before the implementation, 
+along with correct format of the doc string. This helps a lot in term of understanding your methods.
+=================================
+Things that need improvements:
+
+Issue: Improvement of your image identification method.
+
+Line 29 - 30 and Line 178 每 212
+
+- I see that you are using two integers as the indexes to loop through the string name in order to search 
+for the extension format in a pre-defined list of image extensions. This is in fact not a really practical 
+way as you never know if the pre-defined list of images contains all valid image types, and therefore can 
+be improved through two ways that I can suggest: The first is to consider using string.indexOf(※.§) and 
+take the substring of everything after ※.§. An other way involves the usage of File input stream and 
+Mimetype, which it takes the file type as a string in format ※file type/extension§, and the image format 
+can be identified by substring the part before ※/§ and checking if it is ※image§.
+-----------------------------------------------------------------------------------------
+Issue: Warning on the usage of Object arrays
+
+Line 72
+
+- Please beware that usage of super generic type Object[] is usually avoided for unexpected errors,
+Object[] can sometimes mess up your code through adding values in different types such as
+String, int and etc. I suggest you to cast your key_set.toArray() to String then store it
+into a String[] array.
+-----------------------------------------------------------------------------------------
+Issue: Missing doc string of method buildTreeWithImages()
+
+Line 215 每 280
+
+- Please beware that doc strings are needed for all methods in order to help viewers to understand the code.
+-----------------------------------------------------------------------------------------
+Issue: Better approach to compare strings in method buildTreeWithImages()
+
+Line 233
+
+- If you are trying to compare two strings without case matters, use method string.equalsIgnoreCase(string2)
+-----------------------------------------------------------------------------------------
+Issue: Optimization of if condition in method buildTreeWithImages()
+
+Line 247
+
+- Since you are only interested in finding an image file or a sub directory, it is better to not care 
+about a file that is not an image nor creating a file node for that file.And thus your if condition can 
+just maintain as if (type == FileType.DIRECTORY)
+------------------------------------------------------------------------------------------
+Issue: Missing doc string of method openInFinder()
+
+Line 282 每 284
+
+- Please beware that doc strings are needed for all methods in order to help viewers to understand the code.
+------------------------------------------------------------------------------------------
+Issue: variable name too long in method findImagesWithTag()
+
+Line 293
+
+- ※tagWeAreLookingFor§ is a bit too long in convention, you can try condense the meaning to something 
+like ※tagToLook§, etc. 
+------------------------------------------------------------------------------------------
+Issue: code does not match doc string in method findImagesWithTag()
+
+Line 286 - 297
+
+- Your defined param and throws in doc string is different than what you actually have in body code.
+
+
